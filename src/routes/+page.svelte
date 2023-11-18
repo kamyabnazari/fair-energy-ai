@@ -13,7 +13,7 @@
 				Do you want to see how we can design and have a transparent AI?
 			</p>
 			<div class="flex justify-center lg:justify-start">
-				<a href="/case-create" class="btn btn-primary">Try it out</a>
+				<a href="/case-study/create" class="btn btn-primary">Try it out</a>
 			</div>
 		</div>
 	</div>

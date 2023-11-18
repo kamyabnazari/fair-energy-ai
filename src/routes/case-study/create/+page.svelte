@@ -91,14 +91,12 @@
 						Cancel
 					</button>
 				</div>
+				<a href="/case-study/profile" class="btn btn-primary">Create</a>
 				<button
 					class="btn btn-primary"
 					type="button"
 					disabled={loading || location === '' || name === '' || age === ''}
 				>
-					{#if loading}
-						<span class="loading loading-spinner"></span>
-					{/if}
 					Start
 				</button>
 			</div>
