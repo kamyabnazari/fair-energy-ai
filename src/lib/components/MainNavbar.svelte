@@ -52,7 +52,12 @@
 		<a class="btn btn-ghost text-xl" href="/">Fair Energy AI</a>
 	</div>
 	<div class="flex-none">
-		<ul class="menu menu-horizontal px-1">
+		<ul class="menu menu-horizontal gap-4 px-1">
+			<li>
+				<a href="/case-study/create" class:active={$page.url.pathname === '/case-study/create'}>
+					Try it out
+				</a>
+			</li>
 			<li>
 				<a href="/documentation" class:active={$page.url.pathname === '/documentation'}>
 					Documentation
@@ -61,7 +66,7 @@
 			<li><a href="/about-us" class:active={$page.url.pathname === '/about-us'}> About us </a></li>
 		</ul>
 	</div>
-	<label class="swap swap-rotate">
+	<label class="swap swap-rotate px-4">
 		<input
 			type="checkbox"
 			class="theme-controller"

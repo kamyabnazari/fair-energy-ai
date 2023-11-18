@@ -1,4 +1,4 @@
-<div class="hero text-base-content bg-base-100 min-h-full">
+<div class="hero text-base-content bg-base-100 min-h-screen">
 	<div class="hero-content text-justify">
 		<div class="mx-auto my-20 max-w-md">
 			<h1 class="text-5xl font-bold">Documentation</h1>

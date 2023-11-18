@@ -11,13 +11,9 @@
 	let location: string = '';
 </script>
 
-<div class="mx-auto flex min-h-full max-w-7xl flex-col gap-8">
+<div class="mx-auto flex min-h-screen max-w-7xl flex-col gap-8">
 	<div class="flex items-start">
-		<button
-			class="btn btn-link text-primary"
-			on:click={() => goto('/dashboard')}
-			style="max-width: 150px;"
-		>
+		<button class="btn btn-link text-primary" on:click={() => goto('/')} style="max-width: 150px;">
 			<IconClose style="font-size: x-large;" /> close
 		</button>
 	</div>
@@ -87,7 +83,7 @@
 			</div>
 			<div class="mt-8 flex flex-row justify-center">
 				<div class="flex-auto">
-					<button class="btn btn-ghost" on:click={() => goto('/dashboard')} disabled={loading}>
+					<button class="btn btn-ghost" on:click={() => goto('/')} disabled={loading}>
 						Cancel
 					</button>
 				</div>
