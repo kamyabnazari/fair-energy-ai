@@ -1,28 +1,22 @@
-version: "3.8"
+version: '3.8'
 name: fair-energy-ai-application
 services:
-  # Frontend service
-
-  fair-energy-ai-frontend:
-    image: fair-energy-ai-frontend
-    container_name: fair-energy-ai-frontend
+  fair-energy-ai:
+    image: fair-energy-ai
+    container_name: fair-energy-ai
     restart: unless-stopped
     build:
-      context: ./frontend
+      context: ./
       dockerfile: Dockerfile
-    depends_on:
-      - fair-energy-ai-backend
     ports:
-      - "3000:3000"
+      - '3000:3000'
     healthcheck:
-      test: wget --no-verbose --tries=1 --spider http://fair-energy-ai-frontend:3000/ || exit 1
+      test: wget --no-verbose --tries=1 --spider http://fair-energy-ai:3000/ || exit 1
       interval: 10s
       timeout: 10s
       retries: 10
     networks:
       - fair-energy-ai-network
-    env_file:
-      - frontend/.env
 
 networks:
   fair-energy-ai-network:

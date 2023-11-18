@@ -8,9 +8,5 @@ export default defineConfig({
 		Icons({
 			compiler: 'svelte'
 		})
-	],
-	test: {
-		globals: true,
-		environment: 'jsdom'
-	}
+	]
 });

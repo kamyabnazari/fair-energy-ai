@@ -10,7 +10,6 @@ The Fair Energy AI is an demonstration on how AI models and software relying on 
 
 ## Features
 
-- Custom prediction model for energy consumption and fairness.
 - Comprehensive backend and frontend development modules tailored for web applications.
 - A user-friendly interface for energy consumtion overview.
 
@@ -71,9 +70,25 @@ Or Use Docker Compose to create all of it and connect them together.
 docker-compose up --build
 ```
 
-Please setup in the following order:
+#### Frontend
 
-1. Setup [Frontend](frontend/README.md)
+##### Running the frontend
+
+```bash
+npm install
+
+npm run dev
+```
+
+##### Building the project
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
 
 ---
 
