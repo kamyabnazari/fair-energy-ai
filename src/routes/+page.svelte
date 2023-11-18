@@ -1,4 +1,4 @@
-<div class="hero text-base-content bg-base-100 min-h-full">
+<div class="hero text-base-content bg-base-100 min-h-screen">
 	<div class="hero-content flex-col gap-8 lg:flex-row-reverse lg:gap-16">
 		<img
 			src="/fair-energy-ai-cover.png"
