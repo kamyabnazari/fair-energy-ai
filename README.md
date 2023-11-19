@@ -13,14 +13,6 @@ The Fair Energy AI is an demonstration on how AI models and software relying on 
 - Comprehensive backend and frontend development modules tailored for web applications.
 - A user-friendly interface for energy consumtion overview.
 
-## Available Convenience
-
-- Dockerfile supported
-- Docker Compose supported
-- kubernetes supported
-- MonoRepo Project supported
-- Separate Services for Frontend and Backend supported
-
 ## Getting Started
 
 ### Tech-Stack
@@ -60,19 +52,7 @@ https://github.com/kamyabnazari/fair-energy-ai.git
 
 #### Setup
 
-Please create the services after another in order and follow the instructions in the README.md files.
-
-When you run them individually you have to use localhost to access and connect them to each other.
-
-Or Use Docker Compose to create all of it and connect them together.
-
-```bash
-docker-compose up --build
-```
-
-#### Frontend
-
-##### Running the frontend
+##### Running the project
 
 ```bash
 npm install
