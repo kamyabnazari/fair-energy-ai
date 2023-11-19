@@ -13,15 +13,17 @@
 
 	// Charts
 	import BarChart from '$lib/components/charts/BarChart.svelte';
+	import PieChart from '$lib/components/charts/PieChart.svelte';
 
-	let currentStep = 1;
 	let name: string = '';
 	let age: string = '';
 	let location: string = '';
 	let energyConsumed: string = '';
 	let energyConsumedGoal: string = '';
+
 	let dailyConsumptionData: { x: string; y: number }[] = [];
 	let monthlyConsumptionData: { x: string; y: number }[] = [];
+	let energySourcesData = { labels: [], values: [] };
 
 	onMount(() => {
 		name = localStorageUtil.getItem('name');
@@ -37,10 +39,14 @@
 
 	onMount(async () => {
 		if (browser) {
-			const response = await fetch('/api/data/energy-consumption');
-			const data = await response.json();
-			dailyConsumptionData = data.dailyConsumption;
-			monthlyConsumptionData = data.monthlyConsumption;
+			const responseEnergyConsumption = await fetch('/api/data/energy-consumption');
+			const dataEnergyConsumption = await responseEnergyConsumption.json();
+			dailyConsumptionData = dataEnergyConsumption.dailyConsumption;
+			monthlyConsumptionData = dataEnergyConsumption.monthlyConsumption;
+
+			const responseEnergySources = await fetch('/api/data/energy-sources');
+			const dataEnergySources = await responseEnergySources.json();
+			energySourcesData = dataEnergySources;
 		}
 	});
 
@@ -140,6 +146,11 @@
 				</div>
 			{/if}
 		</div>
+		{#if energySourcesData && energySourcesData.labels.length > 0}
+			<div class="w-1/2">
+				<PieChart data={energySourcesData} label="Energy Distribution" />
+			</div>
+		{/if}
 		<div class="flex justify-center py-4">
 			<button class="btn btn-error" on:click={clearCaseStudyData}> Delete Case Study Data </button>
 		</div>
