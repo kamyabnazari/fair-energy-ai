@@ -1,3 +1,5 @@
+import { goto } from "$app/navigation";
+
 export const localStorageUtil = {
     setItem(key: string, value: any) {
         localStorage.setItem(key, JSON.stringify(value));
@@ -10,3 +12,12 @@ export const localStorageUtil = {
         localStorage.removeItem(key);
     }
 };
+
+export function clearCaseStudyData() {
+    localStorageUtil.removeItem('name');
+    localStorageUtil.removeItem('age');
+    localStorageUtil.removeItem('location');
+    localStorageUtil.removeItem('energyConsumed');
+    localStorageUtil.removeItem('energyConsumedGoal');
+    goto('/');
+}

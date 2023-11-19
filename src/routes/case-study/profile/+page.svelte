@@ -7,7 +7,7 @@
 
 	// Essential imports
 	import { goto } from '$app/navigation';
-	import { localStorageUtil } from '$lib/localStorage';
+	import { clearCaseStudyData, localStorageUtil } from '$lib/localStorage';
 	import { onMount } from 'svelte';
 
 	onMount(() => {
@@ -28,14 +28,6 @@
 			return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
 		}
 		return num;
-	}
-
-	function clearCaseStudyData() {
-		localStorageUtil.removeItem('name');
-		localStorageUtil.removeItem('age');
-		localStorageUtil.removeItem('location');
-
-		goto('/');
 	}
 </script>
 
