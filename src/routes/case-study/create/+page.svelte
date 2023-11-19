@@ -68,7 +68,7 @@
 			on:click={clearCaseStudyData}
 			style="max-width: 150px;"
 		>
-			<IconClose style="font-size: x-large;" /> close
+			<IconClose style="font-size: x-large;" /> cancel
 		</button>
 	</div>
 	<div class="self-center">

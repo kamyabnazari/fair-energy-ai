@@ -13,7 +13,7 @@
 			on:click={() => goto('/case-study/profile')}
 			style="max-width: 150px;"
 		>
-			<IconClose style="font-size: x-large;" /> close
+			<IconClose style="font-size: x-large;" /> back
 		</button>
 	</div>
 	<div class="self-center">

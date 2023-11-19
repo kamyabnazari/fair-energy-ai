@@ -36,7 +36,7 @@
 <div class="mx-auto flex min-h-screen max-w-7xl flex-col flex-wrap gap-4">
 	<div class="flex flex-col gap-8">
 		<div class="flex justify-center">
-			<h1 class="text-2xl font-bold md:text-3xl">Case Study</h1>
+			<h1 class="text-2xl font-bold md:text-3xl">Profile</h1>
 		</div>
 		<div class="stats bg-base-200 stats-vertical md:stats-horizontal shadow-lg">
 			<div class="stat">
