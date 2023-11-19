@@ -20,7 +20,7 @@
 	<div class="self-center">
 		<h1 class="mb-8 text-2xl font-bold md:text-3xl">Create a new example case!</h1>
 	</div>
-	<div class="flex flex-col justify-center gap-8 lg:flex-row">
+	<div class="flex flex-row justify-center gap-8">
 		<div
 			class="bg-base-200 mx-auto flex max-w-md flex-1 flex-col justify-between gap-8 rounded-lg p-8 shadow-lg"
 		>

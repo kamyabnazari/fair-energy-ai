@@ -3,6 +3,7 @@
  p-10"
 >
 	<div class="grid grid-flow-col gap-4">
+		<a href="/case-study/create" class="link link-hover">Try it out</a>
 		<a href="/documentation" class="link link-hover">Documentation</a>
 		<a href="/about-us" class="link link-hover">About us</a>
 	</div>
