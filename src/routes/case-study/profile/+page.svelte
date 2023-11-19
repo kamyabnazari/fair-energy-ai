@@ -5,6 +5,21 @@
 	import IconFile from '~icons/solar/file-text-outline';
 	import IconAsset from '~icons/solar/file-smile-outline';
 
+	// Essential imports
+	import { goto } from '$app/navigation';
+	import { localStorageUtil } from '$lib/localStorage';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		const name = localStorageUtil.getItem('name');
+		const age = localStorageUtil.getItem('age');
+		const location = localStorageUtil.getItem('location');
+
+		if (!name || !age || !location) {
+			goto('/case-study/create');
+		}
+	});
+
 	function formatNumber(num: number) {
 		if (num >= 1000000) {
 			return (num / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
@@ -13,6 +28,14 @@
 			return (num / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
 		}
 		return num;
+	}
+
+	function clearCaseStudyData() {
+		localStorageUtil.removeItem('name');
+		localStorageUtil.removeItem('age');
+		localStorageUtil.removeItem('location');
+
+		goto('/');
 	}
 </script>
 
@@ -62,6 +85,9 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="flex justify-center py-4">
+			<button class="btn btn-error" on:click={clearCaseStudyData}> Delete Case Study Data </button>
 		</div>
 	</div>
 </div>

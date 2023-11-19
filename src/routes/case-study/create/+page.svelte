@@ -16,9 +16,13 @@
 		name = localStorageUtil.getItem('name') || '';
 		age = localStorageUtil.getItem('age') || '';
 		location = localStorageUtil.getItem('location') || '';
+
+		// Check if all variables have values on mount
+		if (name !== '' && age !== '' && location !== '') {
+			goto('/case-study/profile');
+		}
 	});
 
-	// Function to save data to local storage
 	function saveData() {
 		localStorageUtil.setItem('name', name);
 		localStorageUtil.setItem('age', age);
