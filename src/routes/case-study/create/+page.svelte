@@ -11,7 +11,7 @@
 	let location: string = '';
 </script>
 
-<div class="mx-auto flex min-h-screen max-w-7xl flex-col gap-8">
+<div class="mx-auto flex min-h-screen max-w-7xl flex-col flex-wrap gap-8">
 	<div class="flex items-start">
 		<button class="btn btn-link text-primary" on:click={() => goto('/')} style="max-width: 150px;">
 			<IconClose style="font-size: x-large;" /> close
