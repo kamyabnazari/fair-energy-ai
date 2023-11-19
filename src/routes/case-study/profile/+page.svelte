@@ -12,18 +12,23 @@
 	import { browser } from '$app/environment';
 
 	// Charts
-	import BarChartDailyConsumption from '$lib/components/charts/BarChartDailyConsumption.svelte';
-	import BarChartMonthlyConsumption from '$lib/components/charts/BarChartMonthlyConsumption.svelte';
+	import BarChart from '$lib/components/charts/BarChart.svelte';
 
+	let currentStep = 1;
+	let name: string = '';
+	let age: string = '';
+	let location: string = '';
+	let energyConsumed: string = '';
+	let energyConsumedGoal: string = '';
 	let dailyConsumptionData: { x: string; y: number }[] = [];
 	let monthlyConsumptionData: { x: string; y: number }[] = [];
 
 	onMount(() => {
-		const name = localStorageUtil.getItem('name');
-		const age = localStorageUtil.getItem('age');
-		const location = localStorageUtil.getItem('location');
-		const energyConsumed = localStorageUtil.getItem('energyConsumed');
-		const energyConsumedGoal = localStorageUtil.getItem('energyConsumedGoal');
+		name = localStorageUtil.getItem('name');
+		age = localStorageUtil.getItem('age');
+		location = localStorageUtil.getItem('location');
+		energyConsumed = localStorageUtil.getItem('energyConsumed');
+		energyConsumedGoal = localStorageUtil.getItem('energyConsumedGoal');
 
 		if (!name || !age || !location || !energyConsumed || !energyConsumedGoal) {
 			goto('/case-study/create');
@@ -54,6 +59,18 @@
 	<div class="flex flex-col gap-8">
 		<div class="flex justify-center">
 			<h1 class="text-2xl font-bold md:text-3xl">Profile</h1>
+		</div>
+		<div class="flex flex-row gap-8">
+			<div class="avatar">
+				<div class="w-24 rounded">
+					<img src={`https://ui-avatars.com/api/?name=${name}`} alt="user avatar" id="avatar" />
+				</div>
+			</div>
+			<div class="flex flex-col">
+				<p>Name: {name}</p>
+				<p>Age: {age}</p>
+				<p>Location: {location}</p>
+			</div>
 		</div>
 		<div class="stats bg-base-200 stats-vertical md:stats-horizontal shadow-lg">
 			<div class="stat">
@@ -111,12 +128,16 @@
 				</div>
 			</div>
 		</div>
-		<div>
-			{#if dailyConsumptionData.length > 0}
-				<BarChartDailyConsumption {dailyConsumptionData} />
+		<div class="flex items-center justify-center gap-4">
+			{#if dailyConsumptionData && dailyConsumptionData.length > 0}
+				<div class="w-1/2">
+					<BarChart data={dailyConsumptionData} label="Daily Consumption" />
+				</div>
 			{/if}
-			{#if monthlyConsumptionData.length > 0}
-				<BarChartMonthlyConsumption {monthlyConsumptionData} />
+			{#if monthlyConsumptionData && monthlyConsumptionData.length > 0}
+				<div class="w-1/2">
+					<BarChart data={monthlyConsumptionData} label="Monthly Consumption" />
+				</div>
 			{/if}
 		</div>
 		<div class="flex justify-center py-4">
