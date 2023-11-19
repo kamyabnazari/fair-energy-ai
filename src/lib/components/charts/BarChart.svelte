@@ -11,7 +11,7 @@
 	onMount(() => {
 		const ctx = canvas.getContext('2d');
 		new Chart(ctx, {
-			type: 'bar', // or 'line', 'pie', etc.
+			type: 'bar',
 			data: {
 				labels: data.map((d) => d.x),
 				datasets: [
@@ -28,6 +28,15 @@
 				scales: {
 					y: {
 						beginAtZero: true
+					}
+				},
+				animation: {
+					delay: (context) => {
+						let delay = 0;
+						if (context.type === 'data' && context.mode === 'default' && !context.dropped) {
+							delay = context.dataIndex * 200 + context.datasetIndex * 100;
+						}
+						return delay;
 					}
 				}
 			}

@@ -48,7 +48,7 @@
 	};
 </script>
 
-<div class="navbar bg-base-100">
+<div class="navbar bg-base-100 shadow-sm">
 	<div class="dropdown px-2 lg:hidden">
 		<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 		<!-- svelte-ignore a11y-label-has-associated-control -->

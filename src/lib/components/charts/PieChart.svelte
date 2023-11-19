@@ -18,19 +18,30 @@
 					{
 						label: label,
 						data: data.values,
-						backgroundColor: [
-							// Add as many colors as you have data points
-							'rgb(255, 99, 132)',
-							'rgb(54, 162, 235)',
-							'rgb(255, 205, 86)'
-							// ...
-						],
+						backgroundColor: ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 205, 86)'],
 						hoverOffset: 4
 					}
 				]
 			},
 			options: {
-				// Additional options if needed
+				plugins: {
+					tooltip: {
+						callbacks: {
+							label: function (context) {
+								let label = context.label || '';
+								if (label) {
+									label += ': ';
+								}
+								if (context.parsed !== null) {
+									const total = context.dataset.data.reduce((acc, curr) => acc + curr, 0);
+									const percentage = ((context.parsed / total) * 100).toFixed(2);
+									label += `${percentage}%`;
+								}
+								return label;
+							}
+						}
+					}
+				}
 			}
 		});
 	});

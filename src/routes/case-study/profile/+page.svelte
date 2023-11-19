@@ -66,16 +66,23 @@
 		<div class="flex justify-center">
 			<h1 class="text-2xl font-bold md:text-3xl">Profile</h1>
 		</div>
-		<div class="flex flex-row gap-8">
-			<div class="avatar">
-				<div class="w-24 rounded">
-					<img src={`https://ui-avatars.com/api/?name=${name}`} alt="user avatar" id="avatar" />
+		<div class="flex flex-row items-center justify-between gap-8">
+			<div class="flex flex-row gap-8">
+				<div class="avatar">
+					<div class="w-24 rounded-xl shadow-md">
+						<img src={`https://ui-avatars.com/api/?name=${name}`} alt="user avatar" id="avatar" />
+					</div>
+				</div>
+				<div class="flex flex-col">
+					<p>Name: {name}</p>
+					<p>Age: {age}</p>
+					<p>Location: {location}</p>
 				</div>
 			</div>
-			<div class="flex flex-col">
-				<p>Name: {name}</p>
-				<p>Age: {age}</p>
-				<p>Location: {location}</p>
+			<div class="flex justify-end py-4">
+				<button class="btn btn-error" on:click={clearCaseStudyData}>
+					Delete Case Study Data
+				</button>
 			</div>
 		</div>
 		<div class="stats bg-base-200 stats-vertical md:stats-horizontal shadow-lg">
@@ -134,25 +141,25 @@
 				</div>
 			</div>
 		</div>
-		<div class="flex items-center justify-center gap-4">
-			{#if dailyConsumptionData && dailyConsumptionData.length > 0}
-				<div class="w-1/2">
-					<BarChart data={dailyConsumptionData} label="Daily Consumption" />
-				</div>
-			{/if}
-			{#if monthlyConsumptionData && monthlyConsumptionData.length > 0}
-				<div class="w-1/2">
-					<BarChart data={monthlyConsumptionData} label="Monthly Consumption" />
-				</div>
-			{/if}
-		</div>
-		{#if energySourcesData && energySourcesData.labels.length > 0}
-			<div class="w-1/2">
-				<PieChart data={energySourcesData} label="Energy Distribution" />
+		<div class="flex items-center gap-8">
+			<div class="flex w-1/2 flex-col">
+				{#if dailyConsumptionData && dailyConsumptionData.length > 0}
+					<div>
+						<BarChart data={dailyConsumptionData} label="Daily Consumption" />
+					</div>
+				{/if}
+				{#if monthlyConsumptionData && monthlyConsumptionData.length > 0}
+					<div>
+						<BarChart data={monthlyConsumptionData} label="Monthly Consumption" />
+					</div>
+				{/if}
 			</div>
-		{/if}
-		<div class="flex justify-center py-4">
-			<button class="btn btn-error" on:click={clearCaseStudyData}> Delete Case Study Data </button>
+			<div class="flex flex-col"></div>
+			{#if energySourcesData && energySourcesData.labels.length > 0}
+				<div>
+					<PieChart data={energySourcesData} label="Energy Distribution" />
+				</div>
+			{/if}
 		</div>
 	</div>
 </div>
