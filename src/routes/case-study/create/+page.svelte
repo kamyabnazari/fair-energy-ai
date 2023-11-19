@@ -22,12 +22,14 @@
 		energyConsumed = localStorageUtil.getItem('energyConsumed') || '';
 		energyConsumedGoal = localStorageUtil.getItem('energyConsumedGoal') || '';
 
-		// Check if personal information is filled
 		if (name && age && location) {
 			currentStep = 2;
 		}
 		if (energyConsumed && energyConsumedGoal) {
 			currentStep = 3;
+		}
+		if (name && age && location && energyConsumed && energyConsumedGoal) {
+			goto('/case-study/profile');
 		}
 	});
 
