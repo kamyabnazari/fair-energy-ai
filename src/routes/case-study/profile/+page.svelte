@@ -9,6 +9,14 @@
 	import { goto } from '$app/navigation';
 	import { clearCaseStudyData, localStorageUtil } from '$lib/localStorage';
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
+
+	// Charts
+	import BarChartDailyConsumption from '$lib/components/charts/BarChartDailyConsumption.svelte';
+	import BarChartMonthlyConsumption from '$lib/components/charts/BarChartMonthlyConsumption.svelte';
+
+	let dailyConsumptionData: { x: string; y: number }[] = [];
+	let monthlyConsumptionData: { x: string; y: number }[] = [];
 
 	onMount(() => {
 		const name = localStorageUtil.getItem('name');
@@ -19,6 +27,15 @@
 
 		if (!name || !age || !location || !energyConsumed || !energyConsumedGoal) {
 			goto('/case-study/create');
+		}
+	});
+
+	onMount(async () => {
+		if (browser) {
+			const response = await fetch('/api/data/energy-consumption');
+			const data = await response.json();
+			dailyConsumptionData = data.dailyConsumption;
+			monthlyConsumptionData = data.monthlyConsumption;
 		}
 	});
 
@@ -93,6 +110,14 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		<div>
+			{#if dailyConsumptionData.length > 0}
+				<BarChartDailyConsumption {dailyConsumptionData} />
+			{/if}
+			{#if monthlyConsumptionData.length > 0}
+				<BarChartMonthlyConsumption {monthlyConsumptionData} />
+			{/if}
 		</div>
 		<div class="flex justify-center py-4">
 			<button class="btn btn-error" on:click={clearCaseStudyData}> Delete Case Study Data </button>
