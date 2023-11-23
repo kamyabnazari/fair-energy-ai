@@ -12,15 +12,22 @@
 	let loading: boolean;
 	let currentStep = 1;
 	let name: string = '';
+	let gender: string = '';
 	let age: string = '1';
 	let location: string = '';
+	let maritalStatus: string = '';
 	let energyConsumed: string = '';
 	let energyConsumedGoal: string = '';
 
+	const genderOptions: string[] = ['Male', 'Female', 'Non-Binary'];
+	const maritalStatusOptions = ['Single', 'Married', 'Divorced', 'Widowed', 'Separated'];
+
 	onMount(() => {
 		name = localStorageUtil.getItem('name') || '';
+		gender = localStorageUtil.getItem('gender') || '';
 		age = localStorageUtil.getItem('age') || '';
 		location = localStorageUtil.getItem('location') || '';
+		maritalStatus = localStorageUtil.getItem('maritalStatus') || '';
 		energyConsumed = localStorageUtil.getItem('energyConsumed') || '';
 		energyConsumedGoal = localStorageUtil.getItem('energyConsumedGoal') || '';
 
@@ -37,8 +44,10 @@
 
 	function saveData() {
 		localStorageUtil.setItem('name', name);
+		localStorageUtil.setItem('gender', gender);
 		localStorageUtil.setItem('age', age);
 		localStorageUtil.setItem('location', location);
+		localStorageUtil.setItem('maritalStatus', maritalStatus);
 		localStorageUtil.setItem('energyConsumed', energyConsumed);
 		localStorageUtil.setItem('energyConsumedGoal', energyConsumedGoal);
 	}
@@ -125,6 +134,27 @@
 					<div class="flex w-full justify-center">
 						<div class="form-control w-full">
 							<label for="idea" class="label">
+								<span class="label-text">Your Gender?</span>
+							</label>
+							<select
+								class="select select-bordered"
+								id="gender"
+								name="gender"
+								disabled={loading}
+								bind:value={gender}
+							>
+								<option disabled selected value="">Select gender</option>
+								{#each genderOptions as option}
+									<option value={option}>{option}</option>
+								{/each}
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="flex w-full flex-row justify-center">
+					<div class="flex w-full justify-center">
+						<div class="form-control w-full">
+							<label for="idea" class="label">
 								<span class="label-text">What is your age?</span>
 							</label>
 							<select
@@ -158,6 +188,27 @@
 								<option disabled value="">Select country</option>
 								{#each countries as country}
 									<option value={country}>{country}</option>
+								{/each}
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="flex w-full flex-row justify-center">
+					<div class="flex w-full justify-center">
+						<div class="form-control w-full">
+							<label for="marital-status" class="label">
+								<span class="label-text">Your Marital Status?</span>
+							</label>
+							<select
+								class="select select-bordered"
+								id="marital-status"
+								name="marital-status"
+								disabled={loading}
+								bind:value={maritalStatus}
+							>
+								<option disabled selected value="">Select marital status</option>
+								{#each maritalStatusOptions as option}
+									<option value={option}>{option}</option>
 								{/each}
 							</select>
 						</div>

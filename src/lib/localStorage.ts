@@ -15,8 +15,10 @@ export const localStorageUtil = {
 
 export function clearCaseStudyData() {
     localStorageUtil.removeItem('name');
+    localStorageUtil.removeItem('gender');
     localStorageUtil.removeItem('age');
     localStorageUtil.removeItem('location');
+    localStorageUtil.removeItem('maritalStatus');
     localStorageUtil.removeItem('energyConsumed');
     localStorageUtil.removeItem('energyConsumedGoal');
     goto('/');

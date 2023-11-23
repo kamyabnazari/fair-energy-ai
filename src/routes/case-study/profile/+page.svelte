@@ -16,8 +16,10 @@
 	import PieChart from '$lib/components/charts/PieChart.svelte';
 
 	let name: string = '';
+	let gender: string = '';
 	let age: string = '';
 	let location: string = '';
+	let maritalStatus: string = '';
 	let energyConsumed: string = '';
 	let energyConsumedGoal: string = '';
 
@@ -27,12 +29,14 @@
 
 	onMount(() => {
 		name = localStorageUtil.getItem('name');
+		gender = localStorageUtil.getItem('gender');
 		age = localStorageUtil.getItem('age');
 		location = localStorageUtil.getItem('location');
+		maritalStatus = localStorageUtil.getItem('maritalStatus');
 		energyConsumed = localStorageUtil.getItem('energyConsumed');
 		energyConsumedGoal = localStorageUtil.getItem('energyConsumedGoal');
 
-		if (!name || !age || !location || !energyConsumed || !energyConsumedGoal) {
+		if (!name || !gender || !age || !location || !energyConsumed || !energyConsumedGoal) {
 			goto('/case-study/create');
 		}
 	});
@@ -75,8 +79,10 @@
 				</div>
 				<div class="flex flex-col">
 					<p>Name: {name}</p>
+					<p>Gender: {gender}</p>
 					<p>Age: {age}</p>
 					<p>Location: {location}</p>
+					<p>Marital Status: {maritalStatus}</p>
 				</div>
 			</div>
 			<div class="flex justify-end py-4">
