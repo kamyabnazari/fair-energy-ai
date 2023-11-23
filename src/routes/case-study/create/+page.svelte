@@ -1,16 +1,18 @@
 <script lang="ts">
 	// Icons imports
 	import IconClose from '~icons/solar/alt-arrow-left-bold';
+	import IconInfo from '~icons/solar/info-square-outline';
 
 	// Essential imports
 	import { goto } from '$app/navigation';
 	import { clearCaseStudyData, localStorageUtil } from '$lib/localStorage';
 	import { onMount } from 'svelte';
+	import { countries } from '$lib/countries';
 
 	let loading: boolean;
 	let currentStep = 1;
 	let name: string = '';
-	let age: string = '';
+	let age: string = '1';
 	let location: string = '';
 	let energyConsumed: string = '';
 	let energyConsumedGoal: string = '';
@@ -59,6 +61,13 @@
 			goto('/case-study/profile');
 		}
 	}
+
+	// Function to create an array from 1 to 99
+	function createAgeOptions(): string[] {
+		return Array.from({ length: 99 }, (_, i) => (i + 1).toString());
+	}
+
+	const ageOptions: string[] = createAgeOptions();
 </script>
 
 <div class="mx-auto flex min-h-screen max-w-7xl flex-col flex-wrap gap-4">
@@ -73,6 +82,12 @@
 	</div>
 	<div class="self-center">
 		<h1 class="mb-8 text-2xl font-bold md:text-3xl">Create a new example case!</h1>
+	</div>
+	<div class="self-center">
+		<div role="alert" class="alert">
+			<IconInfo style="font-size: x-large;" />
+			<span>The following data will only be saved in your Browser Local Storage</span>
+		</div>
 	</div>
 	<div class="flex flex-row justify-center gap-4">
 		{#if currentStep === 1}
@@ -112,16 +127,18 @@
 							<label for="idea" class="label">
 								<span class="label-text">What is your age?</span>
 							</label>
-							<input
-								class="input input-bordered w-full rounded-md border-2"
-								placeholder="50 Years"
-								type="text"
-								id="name"
-								name="name"
+							<select
+								class="select select-bordered"
+								id="age"
+								name="age"
 								disabled={loading}
 								bind:value={age}
-								on:input={saveData}
-							/>
+							>
+								<option disabled value="">Select age</option>
+								{#each ageOptions as option}
+									<option value={option}>{option}</option>
+								{/each}
+							</select>
 						</div>
 					</div>
 				</div>
@@ -131,16 +148,18 @@
 							<label for="idea" class="label">
 								<span class="label-text">Where do you live?</span>
 							</label>
-							<input
-								class="input input-bordered w-full rounded-md border-2"
-								placeholder="Germany"
-								type="text"
-								id="name"
-								name="name"
+							<select
+								class="select select-bordered"
+								id="location"
+								name="location"
 								disabled={loading}
 								bind:value={location}
-								on:input={saveData}
-							/>
+							>
+								<option disabled value="">Select country</option>
+								{#each countries as country}
+									<option value={country}>{country}</option>
+								{/each}
+							</select>
 						</div>
 					</div>
 				</div>
