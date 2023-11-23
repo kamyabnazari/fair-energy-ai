@@ -276,7 +276,7 @@
 							<div class="flex items-center gap-2">
 								<input
 									type="range"
-									min="10"
+									min="100"
 									max="5000"
 									step="1"
 									class="range range-success"

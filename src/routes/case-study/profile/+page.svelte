@@ -1,9 +1,10 @@
 <script lang="ts">
 	// Icons imports
 	import IconCreate from '~icons/solar/clipboard-add-outline';
-	import IconProject from '~icons/solar/clapperboard-text-outline';
-	import IconFile from '~icons/solar/file-text-outline';
-	import IconAsset from '~icons/solar/file-smile-outline';
+	import IconSunrise from '~icons/solar/sunrise-bold';
+	import IconSunriseDown from '~icons/solar/sunset-bold';
+	import IconSunStill from '~icons/solar/water-sun-broken';
+	import IconFeed from '~icons/solar/feed-outline';
 
 	// Essential imports
 	import { goto } from '$app/navigation';
@@ -94,25 +95,39 @@
 		<div class="stats bg-base-200 stats-vertical md:stats-horizontal shadow-lg">
 			<div class="stat">
 				<div class="stat-figure text-secondary">
-					<IconProject style="font-size: x-large;" class="text-primary" />
+					<IconSunStill style="font-size: x-large;" class="text-warning" />
 				</div>
-				<div class="stat-title">Energy Consumption Total</div>
-				<div class="stat-value">{formatNumber(0 ?? 0)}</div>
+				<div class="stat-title">Previous Month Energy Consumption</div>
+				<div class="stat-value text-warning">{formatNumber(Number(energyConsumed) ?? 0)}</div>
 			</div>
 			<div class="stat">
 				<div class="stat-figure text-secondary">
-					<IconFile style="font-size: x-large;" class="text-primary" />
+					<IconSunrise style="font-size: x-large;" class="text-primary" />
 				</div>
-				<div class="stat-title">Current Consumption</div>
-				<div class="stat-value">{formatNumber(0 ?? 0)}</div>
+				<div class="stat-title">Current Months Energy Consumption</div>
+				<div class="stat-value text-primary">
+					{formatNumber(Number(energyConsumedGoal) * 0.5 ?? 0)}
+				</div>
 			</div>
 			<div class="stat">
 				<div class="stat-figure text-secondary">
-					<IconAsset style="font-size: x-large;" class="text-primary" />
+					<IconSunriseDown style="font-size: x-large;" class="text-success" />
 				</div>
-				<div class="stat-title">Future Consumption</div>
-				<div class="stat-value">{formatNumber(0 ?? 0)}</div>
+				<div class="stat-title">This Month Energy Goal</div>
+				<div class="stat-value text-success">{formatNumber(Number(energyConsumedGoal) ?? 0)}</div>
 			</div>
+		</div>
+		<div class="flex items-center gap-8">
+			{#if dailyConsumptionData && dailyConsumptionData.length > 0}
+				<div class="flex w-1/2">
+					<BarChart data={dailyConsumptionData} label="Daily Consumption" />
+				</div>
+			{/if}
+			{#if monthlyConsumptionData && monthlyConsumptionData.length > 0}
+				<div class="flex w-1/2">
+					<BarChart data={monthlyConsumptionData} label="Monthly Consumption" />
+				</div>
+			{/if}
 		</div>
 		<div class="flex w-full gap-8">
 			<div class="card bg-base-200 flex-1 shadow-lg">
@@ -120,7 +135,7 @@
 					<h2 class="card-title">Do you want to know how this demo work?</h2>
 					<p>So just visit the following documentation!</p>
 					<div class="card-actions justify-end py-4">
-						<a href="/case-study/fairness-algorithm">
+						<a href="/case-study/documentation">
 							<button class="btn btn-primary gap-4">
 								<IconCreate style="font-size: x-large" class="text-primary-content" />
 								<span class="hidden sm:inline">Documentation</span>
@@ -137,7 +152,7 @@
 						Consumption!
 					</p>
 					<div class="card-actions justify-end py-4">
-						<a href="/case-study/documentation">
+						<a href="/case-study/fairness-algorithm">
 							<button class="btn btn-primary gap-4">
 								<IconCreate style="font-size: x-large" class="text-primary-content" />
 								<span class="hidden sm:inline">Fairness Algorithm</span>
@@ -146,26 +161,28 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="flex items-center gap-8">
-			<div class="flex w-1/2 flex-col">
-				{#if dailyConsumptionData && dailyConsumptionData.length > 0}
-					<div>
-						<BarChart data={dailyConsumptionData} label="Daily Consumption" />
+			<div class="card bg-base-200 flex-1 shadow-lg">
+				<div class="card-body">
+					<h2 class="card-title">Stakeholder Feedback</h2>
+					<p>Are you not satisfied with the your experience with Fair Energy AI?</p>
+					<div class="card-actions justify-end py-4">
+						<a href="/case-study/stakeholder-feedback">
+							<button class="btn btn-neutral gap-4">
+								<IconFeed style="font-size: x-large" class="text-primary-content" />
+								<span class="hidden sm:inline">Sent Feedback</span>
+							</button>
+						</a>
 					</div>
-				{/if}
-				{#if monthlyConsumptionData && monthlyConsumptionData.length > 0}
-					<div>
-						<BarChart data={monthlyConsumptionData} label="Monthly Consumption" />
-					</div>
-				{/if}
-			</div>
-			<div class="flex flex-col"></div>
-			{#if energySourcesData && energySourcesData.labels.length > 0}
-				<div>
-					<PieChart data={energySourcesData} label="Energy Distribution" />
 				</div>
-			{/if}
+			</div>
 		</div>
 	</div>
+</div>
+
+<div class="flex flex-col">
+	{#if energySourcesData && energySourcesData.labels.length > 0}
+		<div>
+			<PieChart data={energySourcesData} label="Energy Distribution" />
+		</div>
+	{/if}
 </div>
