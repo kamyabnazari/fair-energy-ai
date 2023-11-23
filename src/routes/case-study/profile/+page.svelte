@@ -14,7 +14,6 @@
 
 	// Charts
 	import BarChart from '$lib/components/charts/BarChart.svelte';
-	import PieChart from '$lib/components/charts/PieChart.svelte';
 
 	let name: string = '';
 	let gender: string = '';
@@ -129,6 +128,20 @@
 				</div>
 			{/if}
 		</div>
+		<div class="card bg-base-200 flex-1 shadow-lg">
+			<div class="card-body">
+				<h2 class="card-title">Future Prognosis</h2>
+				<p>Do you want to see the AIs future prediction?</p>
+				<div class="card-actions justify-end py-4">
+					<a href="/case-study/prognosis">
+						<button class="btn btn-warning gap-4">
+							<IconFeed style="font-size: x-large" class="text-warning-content" />
+							<span class="hidden sm:inline">View</span>
+						</button>
+					</a>
+				</div>
+			</div>
+		</div>
 		<div class="flex w-full gap-8">
 			<div class="card bg-base-200 flex-1 shadow-lg">
 				<div class="card-body">
@@ -177,12 +190,4 @@
 			</div>
 		</div>
 	</div>
-</div>
-
-<div class="flex flex-col">
-	{#if energySourcesData && energySourcesData.labels.length > 0}
-		<div>
-			<PieChart data={energySourcesData} label="Energy Distribution" />
-		</div>
-	{/if}
 </div>
