@@ -246,38 +246,49 @@
 				<div class="flex w-full flex-row justify-center">
 					<div class="flex w-full justify-center">
 						<div class="form-control w-full">
-							<label for="idea" class="label">
-								<span class="label-text">How much do think you consume Energy?</span>
+							<label for="energyConsumed" class="label">
+								<span class="label-text">How much energy do you think you consume?</span>
 							</label>
-							<input
-								class="input input-bordered w-full rounded-md border-2"
-								placeholder="80 KWats"
-								type="text"
-								id="energyConsumed"
-								name="energyConsumed"
-								disabled={loading}
-								bind:value={energyConsumed}
-								on:input={saveData}
-							/>
+							<div class="flex items-center gap-2">
+								<input
+									type="range"
+									min="100"
+									max="5000"
+									step="1"
+									class="range range-warning"
+									id="energyConsumed"
+									name="energyConsumed"
+									disabled={loading}
+									bind:value={energyConsumed}
+									on:input={saveData}
+								/>
+								<span class="label-text" id="energyConsumedValue">{energyConsumed} kWh</span>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div class="flex w-full flex-row justify-center">
 					<div class="flex w-full justify-center">
 						<div class="form-control w-full">
-							<label for="idea" class="label">
-								<span class="label-text">What would be your goal?</span>
+							<label for="energyConsumedGoal" class="label">
+								<span class="label-text">What would be your energy consumption goal?</span>
 							</label>
-							<input
-								class="input input-bordered w-full rounded-md border-2"
-								placeholder="50 KWats"
-								type="text"
-								id="energyConsumedGoal"
-								name="energyConsumedGoal"
-								disabled={loading}
-								bind:value={energyConsumedGoal}
-								on:input={saveData}
-							/>
+							<div class="flex items-center gap-2">
+								<input
+									type="range"
+									min="10"
+									max="5000"
+									step="1"
+									class="range range-success"
+									id="energyConsumedGoal"
+									name="energyConsumedGoal"
+									disabled={loading}
+									bind:value={energyConsumedGoal}
+									on:input={saveData}
+								/>
+								<span class="label-text" id="energyConsumedGoalValue">{energyConsumedGoal} kWh</span
+								>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -328,4 +339,58 @@
 			</div>
 		{/if}
 	</div>
+	{#if currentStep === 2}
+		<div class="mx-auto flex min-h-full max-w-7xl flex-col flex-wrap gap-4">
+			<div class="divider">Information</div>
+			<div class="mx-auto my-20 max-w-7xl">
+				<h1 class="text-center text-3xl font-bold">Electricity Consumption Statistics</h1>
+				<div class="mt-6 overflow-x-auto">
+					<table class="table w-full">
+						<!-- head -->
+						<thead>
+							<tr>
+								<th>Single-Person Household</th>
+								<th>Electricity Consumption for 1 Person</th>
+								<th>Electricity Costs for 1 Person</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!-- row 1 -->
+							<tr>
+								<td>1 Person in Apartment per Month</td>
+								<td>108 kWh</td>
+								<td>52 Euro</td>
+							</tr>
+							<!-- row 2 -->
+							<tr>
+								<td>1 Person in Apartment per Year</td>
+								<td>1,300 kWh</td>
+								<td>624 Euro</td>
+							</tr>
+							<!-- row 3 -->
+							<tr>
+								<td>1 Person in Single-Family House per Month</td>
+								<td>192 kWh</td>
+								<td>92 Euro</td>
+							</tr>
+							<!-- row 4 -->
+							<tr>
+								<td>1 Person in Single-Family House per Year</td>
+								<td>2,300 kWh</td>
+								<td>1,104 Euro</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p class="mt-4 text-center">
+					Source: GASAG, (2022). <a
+						href="https://www.gasag.de/magazin/neudenken/stromverbrauch-ein-personen-haushalt#title-0"
+						target="_blank"
+						class="text-primary"
+						rel="noopener noreferrer">How much electricity does 1 person consume?</a
+					>
+				</p>
+			</div>
+		</div>
+	{/if}
 </div>
