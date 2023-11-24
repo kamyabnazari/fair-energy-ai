@@ -1,9 +1,18 @@
 import { json } from '@sveltejs/kit';
 
 export async function GET() {
+    let baseValue: number = 5000000;
+
+    const fluctuationPercentage = 15; // Fluctuates by up to ±5%
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    const producedData = months.map(() => Math.floor(Math.random() * 100));
-    const consumedData = months.map(() => Math.floor(Math.random() * 100));
+
+    const fluctuateValue = (base: number) => {
+        let fluctuation = base * (fluctuationPercentage / 100);
+        return Math.floor(base + fluctuation * (Math.random() - 0.5));
+    };
+
+    const producedData = months.map(() => fluctuateValue(baseValue));
+    const consumedData = months.map(() => fluctuateValue(baseValue));
 
     return json({
         labels: months,

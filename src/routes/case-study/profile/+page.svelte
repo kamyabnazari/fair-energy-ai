@@ -28,7 +28,6 @@
 
 	let dailyConsumptionData: { x: string; y: number }[] = [];
 	let monthlyConsumptionData: { x: string; y: number }[] = [];
-	let energySourcesData = { labels: [], values: [] };
 
 	onMount(() => {
 		name = localStorageUtil.getItem('name');
@@ -47,14 +46,13 @@
 
 	onMount(async () => {
 		if (browser) {
-			const responseEnergyConsumption = await fetch('/api/data/energy-consumption');
+			const energyConsumed = localStorageUtil.getItem('energyConsumed') || 'default_value';
+			const responseEnergyConsumption = await fetch(
+				`/api/data/energy-consumption?energyConsumed=${energyConsumed}`
+			);
 			const dataEnergyConsumption = await responseEnergyConsumption.json();
 			dailyConsumptionData = dataEnergyConsumption.dailyConsumption;
 			monthlyConsumptionData = dataEnergyConsumption.monthlyConsumption;
-
-			const responseEnergySources = await fetch('/api/data/energy-sources');
-			const dataEnergySources = await responseEnergySources.json();
-			energySourcesData = dataEnergySources;
 		}
 	});
 
@@ -133,7 +131,7 @@
 				</div>
 				<div class="stat-title">Current Months Energy Consumption</div>
 				<div class="stat-value text-primary">
-					{formatNumber(Number(energyConsumedGoal) * 0.5 ?? 0)}
+					{formatNumber(Number(energyConsumedGoal) * 0.7 ?? 0)}
 				</div>
 			</div>
 			<div class="stat">
@@ -235,7 +233,12 @@
 
 {#if showAlert}
 	<div class="bottom-alert">
-		<div role="alert" class="alert alert-info shadow-2xl" in:slide={{ duration: 500 }}>
+		<div
+			role="alert"
+			class="alert alert-info ml-16 mr-16 shadow-xl shadow-zinc-500"
+			in:slide={{ duration: 500 }}
+			out:slide={{ duration: 500 }}
+		>
 			<IconInfo style="font-size: x-large;" />
 			<span>You have some veto options still open, decide on them please.</span>
 		</div>

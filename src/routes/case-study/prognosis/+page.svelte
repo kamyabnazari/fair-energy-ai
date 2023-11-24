@@ -7,6 +7,7 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import LineChart from '$lib/components/charts/LineChart.svelte';
+	import { localStorageUtil } from '$lib/localStorage';
 
 	interface ChartData {
 		labels: string[];
@@ -14,7 +15,13 @@
 		label: string;
 	}
 
+	let location: string = '';
+
 	let chartData: ChartData | null = null;
+
+	onMount(() => {
+		location = localStorageUtil.getItem('location');
+	});
 
 	onMount(async () => {
 		if (browser) {
@@ -36,6 +43,9 @@
 	</div>
 	<div class="self-center">
 		<h1 class="mb-8 text-2xl font-bold md:text-3xl">Prognosis</h1>
+	</div>
+	<div class="self-center">
+		<h2 class="mb-8 text-lg font-bold md:text-xl">{location}</h2>
 	</div>
 	<div class="flex flex-row justify-center gap-4">
 		{#if chartData}

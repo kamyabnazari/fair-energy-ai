@@ -27,7 +27,17 @@
 			options: {
 				scales: {
 					y: {
-						beginAtZero: true
+						beginAtZero: true,
+						title: {
+							display: true,
+							text: 'Energy Consumption (kWh)'
+						}
+					},
+					x: {
+						title: {
+							display: true,
+							text: 'Time'
+						}
 					}
 				},
 				animation: {
