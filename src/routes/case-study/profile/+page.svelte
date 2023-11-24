@@ -6,11 +6,12 @@
 	import IconSunStill from '~icons/solar/water-sun-broken';
 	import IconFeed from '~icons/solar/feed-outline';
 	import IconSadFace from '~icons/solar/sad-square-outline';
+	import IconInfo from '~icons/solar/info-square-outline';
 
 	// Essential imports
 	import { goto } from '$app/navigation';
 	import { clearCaseStudyData, localStorageUtil } from '$lib/localStorage';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
 
 	// Charts
@@ -40,6 +41,7 @@
 		if (!name || !gender || !age || !location || !energyConsumed || !energyConsumedGoal) {
 			goto('/case-study/create');
 		}
+		randomAlert(); // Start the random alert process
 	});
 
 	onMount(async () => {
@@ -53,6 +55,27 @@
 			const dataEnergySources = await responseEnergySources.json();
 			energySourcesData = dataEnergySources;
 		}
+	});
+
+	// State for alert visibility and positioning
+	let showAlert = false;
+	let alertTimeout: any;
+
+	// Function to randomly show the alert
+	function randomAlert() {
+		const minDelay = 5000; // 5 seconds
+		const maxDelay = 10000; // 10 seconds
+		const delay = Math.random() * (maxDelay - minDelay) + minDelay;
+		clearTimeout(alertTimeout);
+		alertTimeout = setTimeout(() => {
+			showAlert = true;
+			// Hide alert after a short delay
+			setTimeout(() => (showAlert = false), 5000); // 5 seconds to auto-hide
+		}, delay);
+	}
+
+	onDestroy(() => {
+		clearTimeout(alertTimeout as number);
 	});
 
 	function formatNumber(num: number) {
@@ -191,3 +214,12 @@
 		</div>
 	</div>
 </div>
+
+{#if showAlert}
+	<div class="fixed inset-x-0 bottom-0 flex justify-center">
+		<div role="alert" class="alert alert-info z-50 m-8 shadow-lg">
+			<IconInfo style="font-size: x-large;" />
+			<span>You have some veto options still on open, decide on them please.</span>
+		</div>
+	</div>
+{/if}
