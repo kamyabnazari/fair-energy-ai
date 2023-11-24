@@ -173,20 +173,6 @@
 		<div class="flex w-full gap-8">
 			<div class="card bg-base-200 flex-1 shadow-lg">
 				<div class="card-body">
-					<h2 class="card-title">Do you want some tips to manage your energy?</h2>
-					<p>Look at our suggestion on how to reduce your energy consumption!</p>
-					<div class="card-actions justify-end py-4">
-						<a href="/case-study/tips">
-							<button class="btn btn-success gap-4">
-								<IconCreate style="font-size: x-large" class="text-success-content" />
-								<span class="hidden sm:inline">Tips</span>
-							</button>
-						</a>
-					</div>
-				</div>
-			</div>
-			<div class="card bg-base-200 flex-1 shadow-lg">
-				<div class="card-body">
 					<h2 class="card-title">Do you want veto energy limits?</h2>
 					<p>Look through the list of your actions and veto our actions!</p>
 					<div class="card-actions justify-end py-4">
@@ -214,12 +200,42 @@
 				</div>
 			</div>
 		</div>
+		<div class="flex w-full gap-8">
+			<div class="card bg-base-200 flex-1 shadow-lg">
+				<div class="card-body">
+					<h2 class="card-title">Do you want some tips to manage your energy?</h2>
+					<p>Look at our suggestion on how to reduce your energy consumption!</p>
+					<div class="card-actions justify-end py-4">
+						<a href="/case-study/tips">
+							<button class="btn btn-success gap-4">
+								<IconCreate style="font-size: x-large" class="text-success-content" />
+								<span class="hidden sm:inline">Tips</span>
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="card bg-base-200 flex-1 shadow-lg">
+				<div class="card-body">
+					<h2 class="card-title">Do you want to know what the benefits are?</h2>
+					<p>So are you able to aquire bonuses while reaching your goals?</p>
+					<div class="card-actions justify-end py-4">
+						<a href="/case-study/bonuses">
+							<button class="btn btn-primary gap-4">
+								<IconCreate style="font-size: x-large" class="text-primary-content" />
+								<span class="hidden sm:inline">Bonuses</span>
+							</button>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 
 {#if showAlert}
 	<div class="bottom-alert">
-		<div role="alert" class="alert alert-info" in:slide={{ duration: 500 }}>
+		<div role="alert" class="alert alert-info shadow-2xl" in:slide={{ duration: 500 }}>
 			<IconInfo style="font-size: x-large;" />
 			<span>You have some veto options still open, decide on them please.</span>
 		</div>

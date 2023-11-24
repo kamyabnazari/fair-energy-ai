@@ -12,15 +12,23 @@
 				Management". We combine research, consulting, and technical project management to create
 				innovative solutions that address the challenges of the modern energy market.
 			</p>
+			Our team members include:
 			<p class="py-6">
-				Our team members include Khanh Vi Pham, specializing in strategy development research and
-				consulting, bringing extensive knowledge in energy management to support our clients in
-				designing long-term strategies for the efficient use of AI technologies. Ta Ngan Giang Le
-				focuses on ethics and statistics research and consulting, ensuring our models are not only
-				efficient but also morally responsible. Kamyab Nazari leads our technical projects to ensure
-				our solutions are state-of-the-art, user-friendly, and effectively implemented. Maxim
-				Schmidt, our expert in web application development, ensures our solutions work smoothly not
-				only in the background but also for end-users.
+				<b>Khanh Vi Pham</b>, specializing in strategy development research and consulting, bringing
+				extensive knowledge in energy management to support our clients in designing long-term
+				strategies for the efficient use of AI technologies.
+			</p>
+			<p class="py-6">
+				<b>Ta Ngan Giang</b> Le focuses on ethics and statistics research and consulting, ensuring our
+				models are not only efficient but also morally responsible.
+			</p>
+			<p class="py-6">
+				<b>Kamyab Nazari</b> leads our technical projects to ensure our solutions are state-of-the-art,
+				user-friendly, and effectively implemented.
+			</p>
+			<p class="py-6">
+				<b>Maxim Schmidt</b>, our expert in web application development, ensures our solutions work
+				smoothly not only in the background but also for end-users.
 			</p>
 			<p class="py-6">
 				Together, we aim to create an energy future that is not only efficient and sustainable but
