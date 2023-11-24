@@ -62,17 +62,18 @@
 	let showAlert = false;
 	let alertTimeout: any;
 
-	// Function to randomly show the alert
+	// Function to show the alert repeatedly
 	function randomAlert() {
-		const minDelay = 5000; // 5 seconds
+		const minDelay = 10000; // 10 seconds
 		const maxDelay = 10000; // 10 seconds
-		const delay = Math.random() * (maxDelay - minDelay) + minDelay;
-		clearTimeout(alertTimeout);
-		alertTimeout = setTimeout(() => {
-			showAlert = true;
-			// Hide alert after a short delay
-			setTimeout(() => (showAlert = false), 5000); // 5 seconds to auto-hide
-		}, delay);
+		showAlert = true;
+
+		// Hide alert after a short delay
+		setTimeout(() => {
+			showAlert = false;
+			// Call randomAlert again after a delay to show the alert
+			alertTimeout = setTimeout(randomAlert, Math.random() * (maxDelay - minDelay) + minDelay);
+		}, 5000); // 5 seconds to auto-hide
 	}
 
 	onDestroy(() => {
