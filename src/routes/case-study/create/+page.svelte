@@ -71,9 +71,12 @@
 		}
 	}
 
-	// Function to create an array from 1 to 99
+	// Function to create an array from 18 to 99 for adult ages
 	function createAgeOptions(): string[] {
-		return Array.from({ length: 99 }, (_, i) => (i + 1).toString());
+		const startAge = 18; // Starting age for adults
+		const endAge = 99; // Ending age
+
+		return Array.from({ length: endAge - startAge + 1 }, (_, i) => (startAge + i).toString());
 	}
 
 	const ageOptions: string[] = createAgeOptions();

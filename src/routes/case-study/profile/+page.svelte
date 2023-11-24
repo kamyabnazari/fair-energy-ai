@@ -62,7 +62,7 @@
 
 	// Function to show the alert repeatedly
 	function randomAlert() {
-		const minDelay = 10000; // 10 seconds
+		const minDelay = 5000; // 10 seconds
 		const maxDelay = 10000; // 10 seconds
 		showAlert = true;
 
@@ -123,7 +123,7 @@
 					<IconSunStill style="font-size: x-large;" class="text-warning" />
 				</div>
 				<div class="stat-title">Previous Month Energy Consumption</div>
-				<div class="stat-value text-warning">{formatNumber(Number(energyConsumed) ?? 0)}</div>
+				<div class="stat-value text-warning">{formatNumber(Number(energyConsumed) ?? 0)} kWh</div>
 			</div>
 			<div class="stat">
 				<div class="stat-figure text-secondary">
@@ -131,7 +131,7 @@
 				</div>
 				<div class="stat-title">Current Months Energy Consumption</div>
 				<div class="stat-value text-primary">
-					{formatNumber(Number(energyConsumedGoal) * 0.7 ?? 0)}
+					{formatNumber(Number(energyConsumedGoal) * 0.7 ?? 0)} kWh
 				</div>
 			</div>
 			<div class="stat">
@@ -139,7 +139,9 @@
 					<IconSunriseDown style="font-size: x-large;" class="text-success" />
 				</div>
 				<div class="stat-title">This Month Energy Goal</div>
-				<div class="stat-value text-success">{formatNumber(Number(energyConsumedGoal) ?? 0)}</div>
+				<div class="stat-value text-success">
+					{formatNumber(Number(energyConsumedGoal) ?? 0)} kWh
+				</div>
 			</div>
 		</div>
 		<div class="flex items-center gap-8">
