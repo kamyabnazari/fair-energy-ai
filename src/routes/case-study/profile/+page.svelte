@@ -123,7 +123,7 @@
 					<IconSunStill style="font-size: x-large;" class="text-warning" />
 				</div>
 				<div class="stat-title">Previous Month Energy Consumption</div>
-				<div class="stat-value text-warning">{formatNumber(Number(energyConsumed) ?? 0)} kWh</div>
+				<div class="stat-value text-warning">{formatNumber(Number(energyConsumed) ?? 0)} - kWh</div>
 			</div>
 			<div class="stat">
 				<div class="stat-figure text-secondary">
@@ -131,7 +131,7 @@
 				</div>
 				<div class="stat-title">Current Months Energy Consumption</div>
 				<div class="stat-value text-primary">
-					{formatNumber(Number(energyConsumedGoal) * 0.7 ?? 0)} kWh
+					{formatNumber(Number(energyConsumedGoal) * 0.7 ?? 0)} - kWh
 				</div>
 			</div>
 			<div class="stat">
@@ -140,7 +140,7 @@
 				</div>
 				<div class="stat-title">This Month Energy Goal</div>
 				<div class="stat-value text-success">
-					{formatNumber(Number(energyConsumedGoal) ?? 0)} kWh
+					{formatNumber(Number(energyConsumedGoal) ?? 0)} - kWh
 				</div>
 			</div>
 		</div>
