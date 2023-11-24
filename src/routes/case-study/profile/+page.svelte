@@ -13,6 +13,7 @@
 	import { clearCaseStudyData, localStorageUtil } from '$lib/localStorage';
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { slide } from 'svelte/transition';
 
 	// Charts
 	import BarChart from '$lib/components/charts/BarChart.svelte';
@@ -216,10 +217,23 @@
 </div>
 
 {#if showAlert}
-	<div class="fixed inset-x-0 bottom-0 flex justify-center">
-		<div role="alert" class="alert alert-info z-50 m-8 shadow-lg">
+	<div class="bottom-alert">
+		<div role="alert" class="alert alert-info" in:slide={{ duration: 500 }}>
 			<IconInfo style="font-size: x-large;" />
-			<span>You have some veto options still on open, decide on them please.</span>
+			<span>You have some veto options still open, decide on them please.</span>
 		</div>
 	</div>
 {/if}
+
+<style>
+	.bottom-alert {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000; /* Ensure it's above other elements */
+		display: flex;
+		justify-content: center;
+		margin: 1rem;
+	}
+</style>
