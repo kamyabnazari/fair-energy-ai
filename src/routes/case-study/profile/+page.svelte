@@ -139,7 +139,7 @@
 					<a href="/case-study/prognosis">
 						<button class="btn btn-warning gap-4">
 							<IconFeed style="font-size: x-large" class="text-warning-content" />
-							<span class="hidden sm:inline">View</span>
+							<span class="hidden sm:inline">Prognosis</span>
 						</button>
 					</a>
 				</div>
@@ -165,7 +165,7 @@
 					<h2 class="card-title">Do you want veto energy limits?</h2>
 					<p>Look through the list of your actions and veto our actions!</p>
 					<div class="card-actions justify-end py-4">
-						<a href="/case-study/fairness-algorithm">
+						<a href="/case-study/veto">
 							<button class="btn btn-error gap-4">
 								<IconSadFace style="font-size: x-large" class="text-error-content" />
 								<span class="hidden sm:inline">Veto</span>
