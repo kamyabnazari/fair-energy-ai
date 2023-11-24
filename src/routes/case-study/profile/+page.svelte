@@ -5,6 +5,7 @@
 	import IconSunriseDown from '~icons/solar/sunset-bold';
 	import IconSunStill from '~icons/solar/water-sun-broken';
 	import IconFeed from '~icons/solar/feed-outline';
+	import IconSadFace from '~icons/solar/sad-square-outline';
 
 	// Essential imports
 	import { goto } from '$app/navigation';
@@ -81,6 +82,8 @@
 					<p>Name: {name}</p>
 					<p>Gender: {gender}</p>
 					<p>Age: {age}</p>
+				</div>
+				<div class="flex flex-col">
 					<p>Location: {location}</p>
 					<p>Marital Status: {maritalStatus}</p>
 				</div>
@@ -145,13 +148,13 @@
 		<div class="flex w-full gap-8">
 			<div class="card bg-base-200 flex-1 shadow-lg">
 				<div class="card-body">
-					<h2 class="card-title">Do you want to know how this demo work?</h2>
-					<p>So just visit the following documentation!</p>
+					<h2 class="card-title">Do you want some tips to manage your energy?</h2>
+					<p>Look at our suggestion on how to reduce your energy consumption!</p>
 					<div class="card-actions justify-end py-4">
-						<a href="/case-study/documentation">
-							<button class="btn btn-primary gap-4">
-								<IconCreate style="font-size: x-large" class="text-primary-content" />
-								<span class="hidden sm:inline">Documentation</span>
+						<a href="/case-study/tips">
+							<button class="btn btn-success gap-4">
+								<IconCreate style="font-size: x-large" class="text-success-content" />
+								<span class="hidden sm:inline">Tips</span>
 							</button>
 						</a>
 					</div>
@@ -159,16 +162,13 @@
 			</div>
 			<div class="card bg-base-200 flex-1 shadow-lg">
 				<div class="card-body">
-					<h2 class="card-title">How does the AI model decide?</h2>
-					<p>
-						Look at the step by step process the AI Model was trained to predict your Energy
-						Consumption!
-					</p>
+					<h2 class="card-title">Do you want veto energy limits?</h2>
+					<p>Look through the list of your actions and veto our actions!</p>
 					<div class="card-actions justify-end py-4">
 						<a href="/case-study/fairness-algorithm">
-							<button class="btn btn-primary gap-4">
-								<IconCreate style="font-size: x-large" class="text-primary-content" />
-								<span class="hidden sm:inline">Fairness Algorithm</span>
+							<button class="btn btn-error gap-4">
+								<IconSadFace style="font-size: x-large" class="text-error-content" />
+								<span class="hidden sm:inline">Veto</span>
 							</button>
 						</a>
 					</div>
