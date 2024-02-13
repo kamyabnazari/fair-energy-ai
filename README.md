@@ -1,8 +1,6 @@
 # Fair Energy AI
 
-<div style="text-align: center;">
-  <img src="misc/fair_energy_ai_icon.png" alt="Fair Energy AI Framework Logo" style="max-width: 30%; height: auto; display: block; margin: 0 auto;">
-</div>
+![Banner Image](cover-open-source-fair-energy-ai.webp)
 
 ## Introduction
 
